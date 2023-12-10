@@ -1,0 +1,14 @@
+def sort_list(arr):
+    if len(arr) <= 2:
+        return sorted(arr)
+    else:
+        m = -(-2*len(arr)//3)  # use ceiling division to find the value of m
+        arr[:m] = sort_list(arr[:m])  # sort the first 2/3 of the list
+        arr[-m:] = sort_list(arr[-m:])  # sort the last 2/3 of the list
+        arr[:m] = sort_list(arr[:m])  # sort the first 2/3 of the list again
+        return arr
+
+# Example usage
+unsorted_list = [4, 2, 8, 3, 1, 5, 7, 6]
+sorted_list = sort_list(unsorted_list)
+print(sorted_list)  # Output: [1, 2, 3, 4, 5, 6, 7, 8]
